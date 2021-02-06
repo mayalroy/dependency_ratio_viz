@@ -7,3 +7,5 @@ This personal project is for data exploration. I want to see what I can do with 
 # Visualizations
 
 * [global_map.py](https://github.com/mayalroy/dependency_ratio_viz/blob/main/global_map.py)&mdash;This script takes in country border data from [Natural Earth](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/) and dependency ratio data from the [World Bank](https://data.worldbank.org/indicator/SP.POP.DPND.OL) and creates a GIF showing how countries' old age depency ratios changed between 1960 and 2019. My handling of the geographic data is heavily based on [this tutorial](https://towardsdatascience.com/a-complete-guide-to-an-interactive-geographical-map-using-python-f4c5197e23e0) from Towards Data Science.
+
+![Alt text](https://github.com/mayalroy/dependency_ratio_viz/blob/main/output/global_age_dependency_time.gif)
