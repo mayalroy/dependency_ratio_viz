@@ -1,4 +1,4 @@
-import numpy as mp
+import numpy as np
 import pandas as pd
 import shapefile as shp
 import matplotlib.pyplot as plt
@@ -8,6 +8,8 @@ from bokeh.io import output_notebook, show, output_file, export_png
 from bokeh.plotting import figure
 from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
 from bokeh.palettes import brewer
+import imageio
+from os import listdir
 
 # Path to shape file for countries data
 # Downloaded from https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/
@@ -70,6 +72,21 @@ for y in range(1960, 2020):
 	p.add_layout(color_bar, 'below')
 
 	# Export to desired location
-	export_png(p, filename="/Users/mayaroy/Documents/dependency_ratio_viz/output/global_" + str(y) + ".png")
+	export_png(p, filename="/Users/mayaroy/Documents/dependency_ratio_viz/output/individual_maps/global_" + str(y) + ".png")
+
+# Creating gif
+
+#get list of file names from output folder in sorted order
+image_names = [f for f in listdir("/Users/mayaroy/Documents/dependency_ratio_viz/output/individual_maps")]
+image_names.sort()
+
+# convert list into imageo read objects
+images = [imageio.imread("/Users/mayaroy/Documents/dependency_ratio_viz/output/individual_maps/" + i) for i in image_names]
+
+# add extra copies of last image to let the gif "pause"
+
+images.extend([imageio.imread("/Users/mayaroy/Documents/dependency_ratio_viz/output/individual_maps/" + image_names[-1])] * 15)
+
+imageio.mimsave('/Users/mayaroy/Documents/dependency_ratio_viz/output/global_age_dependency_time.gif', images)
 
 
